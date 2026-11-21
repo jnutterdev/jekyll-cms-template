@@ -1,0 +1,16 @@
+# Fake posts rendered by /pattern-lib through the real post-card include.
+- title: Lorem ipsum dolor sit
+  url: /lorem-ipsum/
+  date: 2026-11-20
+  excerpt: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+  tags: [lorem, ipsum]
+- title: Consectetur adipiscing elit sed do eiusmod
+  url: /consectetur/
+  date: 2026-10-02
+  excerpt: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
+  tags: []
+- title: Duis aute irure
+  url: /duis-aute/
+  date: 2026-09-14
+  excerpt: Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt.
+  tags: [dolor]

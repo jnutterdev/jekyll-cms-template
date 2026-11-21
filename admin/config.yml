@@ -1,0 +1,46 @@
+backend:
+  name: github
+  repo: OWNER/REPO
+  branch: main
+  base_url: https://OAUTH-WORKER.example.workers.dev
+  auth_endpoint: auth
+
+# Run `pnpm dlx decap-server` alongside `jekyll serve`; /admin then edits the working copy directly.
+local_backend: true
+
+media_folder: assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} · {{year}}-{{month}}-{{day}}"
+    sortable_fields: [date, title]
+    fields:
+      - { name: layout, widget: hidden, default: post }
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime, format: "YYYY-MM-DD HH:mm:ss ZZ" }
+      - { name: tags, label: Tags, widget: list, required: false }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: pages
+    label: Pages
+    files:
+      - name: home
+        label: Home
+        file: index.md
+        fields:
+          - { name: layout, widget: hidden, default: home }
+          - { name: body, label: Body, widget: markdown }
+      - name: about
+        label: About
+        file: about.md
+        fields:
+          - { name: layout, widget: hidden, default: page }
+          - { name: title, label: Title, widget: string }
+          - { name: permalink, widget: hidden, default: /about/ }
+          - { name: body, label: Body, widget: markdown }

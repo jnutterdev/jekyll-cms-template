@@ -1,0 +1,11 @@
+name = "decap-oauth"
+main = "src/index.ts"
+compatibility_date = "2026-11-20"
+
+[vars]
+GITHUB_CLIENT_ID = "REPLACE_ME"
+ALLOWED_ORIGIN = "https://example.com"
+# Use "public_repo" if the site repository is public.
+GITHUB_SCOPE = "repo"
+
+# Secret: pnpm exec wrangler secret put GITHUB_CLIENT_SECRET

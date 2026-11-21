@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<div class="container">
+  {{ content }}
+  {%- if site.posts.size > 0 %}
+  {% include section-heading.html title="Latest posts" %}
+  <ul class="post-grid">
+    {%- for post in site.posts %}
+    <li>{% include post-card.html post=post %}</li>
+    {%- endfor %}
+  </ul>
+  {%- endif %}
+</div>

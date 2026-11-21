@@ -1,0 +1,62 @@
+:root {
+  /* Palette */
+  --color-ink: #1c1b19;
+  --color-paper: #f7f4ee;
+  --color-stone: #6b675f;
+  --color-mist: #e4dfd5;
+  --color-rust: #a24d2a;
+  --color-moss: #5d6b4a;
+
+  /* Semantic */
+  --color-bg: var(--color-paper);
+  --color-surface: #ffffff;
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-stone);
+  --color-border: var(--color-mist);
+  --color-accent: var(--color-rust);
+  --color-accent-alt: var(--color-moss);
+
+  /* Fonts — loaded via bunny_fonts in _config.yml */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Type scale (nothing below 0.75rem / 12px) */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.875rem;
+  --text-3xl: 2.25rem;
+  --text-4xl: 3rem;
+
+  --leading-tight: 1.2;
+  --leading-body: 1.65;
+
+  --tracking-wide: 0.05em;
+  --tracking-widest: 0.1em;
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+
+  /* Shape */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --border-thin: 1px solid var(--color-border);
+
+  /* Layout */
+  --content-max: 72rem;
+  --prose-max: 42rem;
+  --gutter: 1.5rem;
+
+  /* Motion */
+  --ease: 0.2s ease-in-out;
+}

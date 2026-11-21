@@ -1,0 +1,31 @@
+title: Site Title
+description: >-
+  A short description of the site for meta tags and the feed.
+author: John Nutter
+baseurl: ""
+url: ""
+
+# Bunny Fonts family string — https://fonts.bunny.net
+# Keep in sync with --font-* in assets/css/tokens.css
+bunny_fonts: "fraunces:600,700|inter:400,500,700|jetbrains-mono:400"
+
+nav:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+
+permalink: /:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - .bundle/
+  - docs/
+  - oauth/
+  - node_modules/

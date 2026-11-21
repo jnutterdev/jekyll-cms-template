@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- if page.noindex %}
+<meta name="robots" content="noindex">
+{%- endif %}
+<title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ site.title | escape }}</title>
+<meta name="description" content="{{ page.excerpt | default: page.description | default: site.description | strip_html | normalize_whitespace | truncate: 160 | escape }}">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+{%- feed_meta %}
+
+{% include fonts.html %}
+
+<link rel="stylesheet" href="{{ '/assets/css/normalize.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/tokens.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/prose.css' | relative_url }}">
+{%- for sheet in page.extra_css %}
+<link rel="stylesheet" href="{{ sheet | relative_url }}">
+{%- endfor %}

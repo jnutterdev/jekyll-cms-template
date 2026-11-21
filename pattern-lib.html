@@ -1,0 +1,138 @@
+---
+layout: default
+title: Pattern library
+permalink: /pattern-lib/
+noindex: true
+extra_css:
+  - /assets/css/pattern-lib.css
+---
+{%- capture tokens_raw %}{% include_relative assets/css/tokens.css %}{% endcapture -%}
+{%- assign token_lines = tokens_raw | newline_to_br | split: "<br />" -%}
+{%- capture placeholder %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%233a3a3a'/%3E%3Cstop offset='1' stop-color='%230d0d0d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='500' fill='url(%23g)'/%3E%3C/svg%3E{% endcapture -%}
+
+<div class="container">
+  <h1>Pattern library</h1>
+  <ul class="pl-jump">
+    <li><a href="#colors">Colors</a></li>
+    <li><a href="#type">Type</a></li>
+    <li><a href="#ornaments">Ornaments</a></li>
+    <li><a href="#components">Components</a></li>
+    <li><a href="#images">Image shapes</a></li>
+  </ul>
+
+  <section class="pl-section">
+    {% include section-heading.html title="Colors" id="colors" %}
+    <ul class="pl-swatches">
+      {%- for raw_line in token_lines %}
+      {%- assign line = raw_line | strip %}
+      {%- assign prefix = line | slice: 0, 8 %}
+      {%- if prefix == "--color-" %}
+      {%- assign name = line | split: ":" | first | strip %}
+      {%- assign value = line | remove_first: name | remove_first: ":" | remove: ";" | strip %}
+      {%- unless value contains "rgb" %}
+      {%- assign key = name | remove_first: "--" %}
+      <li class="pl-swatch">
+        <div class="pl-swatch__chip" style="background: var({{ name }})"></div>
+        <code class="pl-swatch__name">{{ name }}</code>
+        <span class="pl-swatch__value">{{ value }}</span>
+        <span class="pl-swatch__role">{{ site.data.color_roles[key] }}</span>
+      </li>
+      {%- endunless %}
+      {%- endif %}
+      {%- endfor %}
+    </ul>
+  </section>
+
+  <section class="pl-section">
+    {% include section-heading.html title="Type" id="type" %}
+
+    <div class="pl-font">
+      <div class="pl-font__specimen pl-font__specimen--display">Aa</div>
+      <div>
+        <p class="label">Fraunces <span class="pl-demo__where">--font-display · 600, 700</span></p>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Page title (h1) · 700 · text-4xl</span><h1>Lorem ipsum dolor</h1></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Section heading (h2) · 700 · text-2xl</span><h2>Lorem ipsum dolor</h2></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Card title (h3) · 700 · text-xl</span><h3>Lorem ipsum dolor</h3></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Site title · 700 · text-xl</span><span class="site-title">Site Title</span></div>
+      </div>
+    </div>
+
+    <div class="pl-font">
+      <div class="pl-font__specimen pl-font__specimen--body">Aa</div>
+      <div>
+        <p class="label">Inter <span class="pl-demo__where">--font-body · 400, 500, 700</span></p>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Body prose · 400 · text-base</span><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Excerpt · 400 · muted</span><p class="post-card__excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Date / meta · 400 · text-sm · muted</span><span class="meta">November 20, 2026</span></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Nav link · 500 · text-sm · uppercase</span><nav class="site-nav"><ul><li><a href="#type">Lorem</a></li></ul></nav></div>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Label · 700 · text-xs · uppercase, widest</span><span class="label">Lorem ipsum</span></div>
+      </div>
+    </div>
+
+    <div class="pl-font">
+      <div class="pl-font__specimen pl-font__specimen--mono">Aa</div>
+      <div>
+        <p class="label">JetBrains Mono <span class="pl-demo__where">--font-mono · 400</span></p>
+        <div class="pl-type-row"><span class="pl-type-row__spec">Inline code / code blocks · 400 · text-sm</span><code>const lorem = "ipsum";</code></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pl-section">
+    {% include section-heading.html title="Ornaments" id="ornaments" %}
+    <div class="pl-demo">
+      <p class="pl-demo__label"><span class="label">Section heading rule</span><span class="pl-demo__where">Home "Latest posts", this page</span></p>
+      {% include section-heading.html title="Lorem ipsum" %}
+    </div>
+    <div class="pl-demo prose">
+      <p class="pl-demo__label"><span class="label">Horizontal rule</span><span class="pl-demo__where">Markdown <code>---</code> in posts</span></p>
+      <hr>
+    </div>
+  </section>
+
+  <section class="pl-section">
+    {% include section-heading.html title="Components" id="components" %}
+
+    <div class="pl-demo">
+      <p class="pl-demo__label"><span class="label">Post card grid</span><span class="pl-demo__where">Home page</span></p>
+      <ul class="post-grid">
+        {%- for mock in site.data.mock_posts %}
+        <li>{% include post-card.html post=mock %}</li>
+        {%- endfor %}
+      </ul>
+    </div>
+
+    <div class="pl-demo">
+      <p class="pl-demo__label"><span class="label">Tag list</span><span class="pl-demo__where">Post cards, post header</span></p>
+      {%- assign mock_tags = "lorem,ipsum,dolor" | split: "," %}
+      {% include tag-list.html tags=mock_tags %}
+    </div>
+
+    <div class="pl-demo">
+      <p class="pl-demo__label"><span class="label">Prose</span><span class="pl-demo__where">Posts and pages</span></p>
+      <div class="prose">
+        <p>Lorem ipsum dolor sit amet, <a href="#components">consectetur link</a> adipiscing elit, <strong>sed do eiusmod</strong> tempor <code>inline code</code> incididunt.</p>
+        <h2>Lorem heading two</h2>
+        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        <h3>Lorem heading three</h3>
+        <blockquote><p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore.</p></blockquote>
+        <ul>
+          <li>Lorem ipsum dolor</li>
+          <li>Sit amet consectetur</li>
+        </ul>
+        <pre><code>function lorem() {
+  return "ipsum";
+}</code></pre>
+        <hr>
+      </div>
+    </div>
+  </section>
+
+  <section class="pl-section">
+    {% include section-heading.html title="Image shapes" id="images" %}
+    <div class="pl-demo">
+      <p class="pl-demo__label"><span class="label">Rounded 4:3</span><span class="pl-demo__where">Images in prose</span></p>
+      <img class="pl-image" src="{{ placeholder | strip }}" alt="">
+    </div>
+  </section>
+</div>

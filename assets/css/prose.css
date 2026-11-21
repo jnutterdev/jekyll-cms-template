@@ -1,0 +1,53 @@
+.prose {
+  max-width: var(--prose-max);
+}
+
+.prose > * + * {
+  margin-top: var(--space-sm);
+}
+
+.prose h2,
+.prose h3 {
+  margin-top: var(--space-xl);
+}
+
+.prose ul,
+.prose ol {
+  padding-left: var(--space-md);
+}
+
+.prose li + li {
+  margin-top: var(--space-2xs);
+}
+
+.prose blockquote {
+  margin: var(--space-lg) 0;
+  padding-left: var(--space-md);
+  border-left: 3px solid var(--color-accent);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.prose :not(pre) > code {
+  padding: 0.1em 0.35em;
+  background: var(--color-mist);
+  border-radius: var(--radius-sm);
+}
+
+.prose pre {
+  padding: var(--space-md);
+  overflow-x: auto;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  border-radius: var(--radius-md);
+}
+
+.prose hr {
+  margin: var(--space-2xl) 0;
+  border: 0;
+  border-top: var(--border-thin);
+}
+
+.prose img {
+  border-radius: var(--radius-md);
+}
