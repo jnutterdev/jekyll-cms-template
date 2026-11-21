@@ -87,6 +87,18 @@ pnpm dlx decap-server        # in a second terminal
 
 Open `http://localhost:4000/admin/`. Commit the changes yourself.
 
+Run both from the repo root. `decap-server` writes relative to the directory it starts in (or `GIT_REPO_DIRECTORY` if set):
+
+| In /admin | Lands in |
+| --- | --- |
+| New or edited post | `_posts/YYYY-MM-DD-slug.md` |
+| Edit Home / About | `index.md` / `about.md` |
+| Upload an image | `assets/uploads/` |
+
+- It writes files only. Nothing is committed or pushed; check `git status`.
+- Deleting an entry in the UI deletes the file on disk.
+- Local mode only kicks in on `localhost`. If you see a GitHub login button instead of plain "Login", `decap-server` isn't reachable on port 8081.
+
 ### Production login (GitHub)
 
 Decap's Git Gateway only works on Netlify, so this repo ships a small OAuth Worker in `oauth/`.

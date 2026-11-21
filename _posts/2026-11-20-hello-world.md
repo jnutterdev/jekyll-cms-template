@@ -1,7 +1,10 @@
 ---
 layout: post
-title: "Hello, world"
-tags: [meta, jekyll]
+title: hello DECAP CMS!
+date: 2026-11-20 20:51:00 -0500
+tags:
+  - meta
+  - jekyll
 ---
 
 The first post on a fresh site. Posts live in `_posts/` and are named `YYYY-MM-DD-slug.md`.
